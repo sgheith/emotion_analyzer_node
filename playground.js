@@ -1,10 +1,8 @@
 
 const { gptAnalyzeEmotions } = require('./controllers/emotionController');
 
-emotions = 'positive, neutral, negative'
-prompt = 'AI will take over the world.'
-
-gptAnalyzeEmotions(prompt, emotions)
+// emotions = 'positive, neutral, negative'
+// prompt = 'AI will take over the world.'
 
 // prompt = 'I had the most amazing day at the park with my family.'
 //prompt = 'My flight was delayed without any prior notice. I had to wait for hours at the airport.'

@@ -1,12 +1,12 @@
 const openai = require('../config/openaiConfig')
 
-const gptAnalyzeEmotions = async (prompt, emotions) => {
+const gptAnalyzeEmotions = async (req, res) => {
 
     system_prompt = `You are capable of analyzing the sentiment of a given text.
-        You will classify the sentiment of a given text into ONLY ONE of these emotions: ${emotions}.
+        You will classify the sentiment of a given text into ONLY ONE of these emotions: ${req.body.emotions}.
         After classifying the text, respond with the emotion ONLY.`
 
-    user_prompt = `The text to analyze is:  ${prompt}`
+    user_prompt = `The text to analyze is:  ${req.body.prompt}`
 
     messages = [
         { 'role': 'system', 'content': system_prompt },
@@ -27,7 +27,9 @@ const gptAnalyzeEmotions = async (prompt, emotions) => {
     if (content == '')
         content = 'N/A'
 
-    return content
+    res.status(200).json({
+        content: content
+    })
 }
 
 module.exports = { gptAnalyzeEmotions }
